@@ -6,15 +6,25 @@
 //  Copyright © 2020 Mahak Bansal. All rights reserved.
 //
 
+// App id: TSGP24APij9gzCGi0Y73tai7n3G1zDsoNW1qSmqN
+// CLient ID: BoHqchwXLqOX5IOuxrCa1s78mFvvVG0SOdapJLhE
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let APP_ID = "TSGP24APij9gzCGi0Y73tai7n3G1zDsoNW1qSmqN"
+    let CLIENT_KEY = "BoHqchwXLqOX5IOuxrCa1s78mFvvVG0SOdapJLhE"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let parseConfig = ParseClientConfiguration {
+            $0.applicationId = self.APP_ID
+            $0.clientKey = self.CLIENT_KEY
+                $0.server = "https://parseapi.back4app.com"
+        }
+        Parse.initialize(with: parseConfig)
         return true
     }
 
